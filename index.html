@@ -526,17 +526,19 @@
         </div>
 
         <div class="contact-box">
-           <form action="">
-            <h2 class="heading">Contact <span>Me!</span></h2>
-            <div class="field-box">
-                <input type="text" placeholder="Uchenna Julian Christopher" required>
-                <input type="email" placeholder="uchennachristopher4@gmail.com" required>
-                <input type="text" placeholder="Phone" required>
-                <input type="text" placeholder="Your Email" required>
-                <textarea name="" id="" placeholder="Your Message" required></textarea>
-            </div>
-            <button type="submit" class="btn" id="">Send Message</button>
-           </form>
+            <!-- The form action You can use serverless services 
+             like Formspree, EmailJS, or Google Forms. These services handle the backend for you. -->
+            <form action="https://formspree.io/f/mdkakbna" method="POST">
+                <h2 class="heading">Contact <span>Me!</span></h2>
+                <div class="field-box">
+                    <!-- Include the 'name' attribute for all inputs -->
+                    <input type="text" name="name" placeholder="Your Name" maxlength="50" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <input type="text" name="phone" placeholder="Phone" maxlength="15" required>
+                    <textarea name="message" placeholder="Your Message" maxlength="500" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
         </div>
     </div>
  </section>

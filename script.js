@@ -122,5 +122,41 @@ arrowLeft.addEventListener('click', () => {
     }
 
     activePortfolio();
-})
+});
+
+document.getElementById("contactForm").addEventListener("submit", async function (event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Collect form data
+    const form = event.target;
+    const formData = new FormData(form);
+
+    // Convert FormData to a JSON object
+    const jsonData = {};
+    formData.forEach((value, key) => {
+        jsonData[key] = value;
+    });
+
+    try {
+        // Send JSON data to Formspree
+        const response = await fetch(form.action, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json", // Inform Formspree about JSON format
+            },
+            body: JSON.stringify(jsonData),
+        });
+
+        if (response.ok) {
+            alert("Message sent successfully!");
+            form.reset(); // Clear the form
+        } else {
+            const errorData = await response.json();
+            alert("Failed to send message: " + errorData.error || "Unknown error.");
+        }
+    } catch (error) {
+        console.error("Error submitting form:", error);
+        alert("An error occurred. Please try again later.");
+    }
+});
 
